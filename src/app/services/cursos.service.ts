@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Apollo, QueryRef} from 'apollo-angular';
 import gql from 'graphql-tag';
+import { CursoModel } from '../models/curso.model';
 
 @Injectable({
   providedIn: 'root'
@@ -8,16 +9,17 @@ import gql from 'graphql-tag';
 export class CursosService {
   
 
-  cursos: any[] = [];
+  cursos: CursoModel[];
 
   private query: QueryRef<any>;
 
   constructor(private apollo: Apollo) {
-    console.log("ENTRO AL SERVICIO");
+    // console.log("ENTRO AL SERVICIO");
    }
 
    getCursoById(idCurso: number){
-    const CURSOS_QUERY = gql`
+    let cursosTemp: CursoModel[]
+    const CURSO_QUERY = gql`
     query{
       buscarCursoID(courseId:${idCurso}){
         idCurso
@@ -28,18 +30,24 @@ export class CursosService {
     }
     `;
     this.query = this.apollo.watchQuery({
-      query: CURSOS_QUERY,
+      query: CURSO_QUERY,
       variables: {}
     });
 
     this.query.valueChanges.subscribe(result => {
-      this.cursos = result.data && result.data.employees;
-      console.log(result);
+       this.cursos = result.data && result.data.buscarCursoID;
+       //console.log(this.cursos);
+       cursosTemp = this.cursos
     });
+    console.log("busqueda por ID");
+    console.log(cursosTemp);
   }
 
-  getAllCursos(){
-    const CURSOS_QUERY = gql`
+    async getAllCursos(){
+
+    return await new Promise<CursoModel[]>((resolve) => {
+      setTimeout(() => {   
+      const CURSOS_QUERY = gql`
     query{
       listarCursos{
         idCurso,
@@ -49,15 +57,20 @@ export class CursosService {
         idProfesor
       }
     }
-    `;
+    `;    
     this.query = this.apollo.watchQuery({
       query: CURSOS_QUERY,
       variables: {}
-    });
+    });  
 
+     
     this.query.valueChanges.subscribe(result => {
-      this.cursos = result.data && result.data.employees;
-      console.log(result);
+      this.cursos =  result.data && result.data.listarCursos;        
+      resolve(this.cursos)
+     // return this.cursos
     });
+  });
+  })  
+
   }
 }
