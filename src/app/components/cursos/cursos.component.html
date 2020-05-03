@@ -1,0 +1,55 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Listado de cursos</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                                <th scope="col">
+                                    ID
+                                </th>
+                                <th scope="col">
+                                    Nombre
+                                </th>
+                                <th scope="col">
+                                    Categoria
+                                </th>
+                                <th scope="col">
+                                    Duración
+                                </th>
+                                <th class="text-right" scope="col">
+                                    Profesor
+                                </th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let curso of cursos">
+                                    <td>
+                                        {{curso.idCurso}}
+                                    </td>
+                                    <td>
+                                        {{curso.nombre}}
+                                    </td>
+                                    <td>
+                                        {{curso.categoria}}
+                                    </td>
+                                    <td>
+                                        {{curso.duracion}} horas
+                                    </td>
+                                    <td class="text-right">
+                                        {{curso.idProfesor}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

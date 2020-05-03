@@ -14,6 +14,11 @@ import { ChartsModule } from 'ng2-charts';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
+import { CursosComponent } from '../../components/cursos/cursos.component';
+import { RegisterComponent} from '../../components/register/register.component';
+import {LoginComponent} from '../../components/login/login.component';
+import { ProfileComponent } from '../../profile/profile.component';
+import { CursoComponent } from '../../components/curso/curso.component';
 
 @NgModule({
   imports: [
@@ -33,6 +38,11 @@ import { UpgradeComponent } from '../../upgrade/upgrade.component';
     IconsComponent,
     MapsComponent,
     NotificationsComponent,
+    CursosComponent,
+    RegisterComponent,
+    LoginComponent,
+    ProfileComponent,
+    CursoComponent
   ]
 })
 
