@@ -14,7 +14,7 @@
               <div class="col-md-6 pr-1">
                 <div class="form-group">
                   <label>Nombre de usuario</label>
-                  <input type="text" name="username" class="form-control" placeholder="Tu nombre de usuario aquí" id ="username"  ngModel>
+                  <input type="text" name="username" class="form-control" placeholder="Tu nombre de usuario aquí (máx.10 caracteres)" id ="username"  ngModel>
                 </div>
               </div>
             </div>
@@ -41,16 +41,18 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-md-4 pr-1">
+              <div class="col-md-12 pr-1">
                 <div class="form-group">
                   <label>Contraseña</label>
-                  <input type="password" name="password1" class="form-control" placeholder="Ingresa tu contraseña aquí"  id="password1" ngModel="">
+                  <input type="password" name="password1" class="form-control" placeholder="Debe incluir al menos una letra mayúscula, una letra minúscula, y un número."  id="password1" ngModel>
                 </div>
               </div>
-              <div class="col-md-4 px-1">
+            </div>
+            <div class="row">
+              <div class="col-md-12 pr-1">
                 <div class="form-group">
                   <label>Confirma tu contraseña</label>
-                  <input type="password" name="password2" class="form-control" placeholder="Confirma tu contraseña aquí"  id="password2">
+                  <input type="password" name="password2" class="form-control" placeholder="Confirma tu contraseña aquí"  id="password2" ngModel>
                 </div>
               </div>
             </div>
@@ -75,7 +77,5 @@
   </div>
 </div>
 
-<script>
 
-</script>
 

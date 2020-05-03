@@ -29,8 +29,6 @@ import { from } from 'rxjs';
     FormsModule,
     ChartsModule,
     NgbModule,
-    FormsModule,
-    ReactiveFormsModule,
     ToastrModule.forRoot()
   ],
   declarations: [
