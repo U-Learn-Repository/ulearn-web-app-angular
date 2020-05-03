@@ -24,12 +24,11 @@ import { GraphQLModule } from './graphql.module';
     AppRoutingModule,
     NgbModule,
     ToastrModule.forRoot(),
-    GraphQLModule
+    GraphQLModule,
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent
-
   ],
   providers: [],
   bootstrap: [AppComponent]

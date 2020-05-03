@@ -11,6 +11,7 @@ import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { CursosComponent } from '../../components/cursos/cursos.component';
 import { RegisterComponent} from '../../components/register/register.component';
 import {LoginComponent} from '../../components/login/login.component';
+import { ProfileComponent } from '../../profile/profile.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -23,5 +24,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'upgrade',        component: UpgradeComponent },
     { path: 'cursos',         component: CursosComponent},
     { path: 'registro',       component: RegisterComponent},
-    { path: 'login',          component: LoginComponent}
+    { path: 'login',          component: LoginComponent},
+    { path: 'profile',        component: ProfileComponent}
 ];

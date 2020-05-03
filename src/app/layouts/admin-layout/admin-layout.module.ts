@@ -17,6 +17,7 @@ import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { CursosComponent } from '../../components/cursos/cursos.component';
 import { RegisterComponent} from '../../components/register/register.component';
 import {LoginComponent} from '../../components/login/login.component';
+import { ProfileComponent } from '../../profile/profile.component';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import {LoginComponent} from '../../components/login/login.component';
     NotificationsComponent,
     CursosComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    ProfileComponent
   ]
 })
 
