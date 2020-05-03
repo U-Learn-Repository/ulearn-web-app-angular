@@ -13,6 +13,7 @@ import { RegisterComponent} from '../../components/register/register.component';
 import {LoginComponent} from '../../components/login/login.component';
 import { ProfileComponent } from '../../profile/profile.component';
 import { CursoComponent } from '../../components/curso/curso.component';
+import { QuizzesComponent } from '../../components/quizzes/quizzes.component'
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -27,5 +28,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'registro',       component: RegisterComponent},
     { path: 'login',          component: LoginComponent},
     { path: 'profile',        component: ProfileComponent},
-    { path: 'curso',          component: CursoComponent}
+    { path: 'curso',          component: CursoComponent},
+    { path: 'create-quiz',        component: QuizzesComponent},
 ];

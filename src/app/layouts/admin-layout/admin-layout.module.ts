@@ -19,6 +19,8 @@ import { RegisterComponent} from '../../components/register/register.component';
 import {LoginComponent} from '../../components/login/login.component';
 import { ProfileComponent } from '../../profile/profile.component';
 import { CursoComponent } from '../../components/curso/curso.component';
+import { QuizzesComponent } from '../../components/quizzes/quizzes.component'
+import { from } from 'rxjs';
 
 @NgModule({
   imports: [
@@ -42,7 +44,8 @@ import { CursoComponent } from '../../components/curso/curso.component';
     RegisterComponent,
     LoginComponent,
     ProfileComponent,
-    CursoComponent
+    CursoComponent,
+    QuizzesComponent
   ]
 })
 
