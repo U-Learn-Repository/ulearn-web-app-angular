@@ -62,7 +62,6 @@ export class CursosService {
       query: CURSOS_QUERY,
       variables: {}
     });  
-
      
     this.query.valueChanges.subscribe(result => {
       this.cursos =  result.data && result.data.listarCursos;        
@@ -72,5 +71,32 @@ export class CursosService {
   });
   })  
 
+  }
+
+  registrarCurso() {
+    const CURSO_QUERY = gql`
+    mutation {
+      crearCurso(curso: {
+        nombre: "PYTHON PRUEBA3"
+        categoria: "PYTHON"
+        duracion: 31
+        idProfesor: 1
+      }) {
+        nombre,
+        categoria,
+        duracion,
+        idProfesor
+      }
+    }
+    `;
+    this.apollo.mutate({
+      mutation: CURSO_QUERY,
+      variables:{}
+    }).subscribe((data) => {
+      console.log("-----------------");
+      console.log(data.data);
+    },(error) => {
+      console.log(error);
+    })
   }
 }
