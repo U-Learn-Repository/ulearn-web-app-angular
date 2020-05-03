@@ -16,17 +16,73 @@ export class RegisterComponent implements OnInit {
 
   }
 
-  registrarEstudiante(form: NgForm) {
-    console.log(form.value.names);
-    console.log(form.value.surnames);
-    console.log(form.value.id_documment);
-    console.log(form.value.username);
+  checkForm(form: NgForm) {
+    if (form.value.username === '') {
+      alert('Error: Nombre de usuario no puede estar vacío');
+      return false;
+    }
+    if (form.value.username.length > 10) {
+      alert('Error: El nombre de usuario debe ser de menos de 10 caracteres');
+      return false;
+    }
+    if (form.value.names === '') {
+      alert('Error: Nombres no puede estar vacío');
+      return false;
+    }
+    if (form.value.surnames === '') {
+      alert('Error: Apellidos no puede estar vacío');
+      return false;
+    }
+    if (form.value.id_documment === '') {
+      alert('Error: Documento de identidad no puede estar vacío');
+      return false;
+    }
+
+    const re = /^\w+$/;
+    if (!re.test(form.value.username)) {
+      alert('Error: El nombre de usuario debe contenter sólo letras, números y guiones bajos.');
+      return false;
+    }
     console.log(form.value.password1);
-    this.registerService.registrarEstudiante(
-      form.value.names,
-      form.value.surnames,
-      form.value.id_documment,
-      form.value.username,
-      form.value.password1);
+    console.log(form.value.password2);
+    if (form.value.password1 !== '' && form.value.password1 === form.value.password2) {
+      // tslint:disable-next-line:no-shadowed-variable
+      let re = /[0-9]/;
+      if (!re.test(form.value.password1)) {
+        alert('Error: La contraseña debe tener al menos un número');
+        return false;
+      }
+      re = /[a-z]/;
+      if (!re.test(form.value.password1)) {
+        alert('Error: La contraseña debe tener al menos una letra minúscula');
+        return false;
+      }
+      re = /[A-Z]/;
+      if (!re.test(form.value.password1)) {
+        alert('Error: La contraseña debe tener al menos una letra mayúscula');
+        return false;
+      }
+    } else {
+      alert('Error: Por favor verifica que ingresaste y confirmaste tu contraseña correctamente');
+      return false;
+    }
+    return true;
   }
+
+  registrarEstudiante(form: NgForm) {
+    if (this.checkForm(form)) {
+      console.log(form.value.names);
+      console.log(form.value.surnames);
+      console.log(form.value.id_documment);
+      console.log(form.value.username);
+      console.log(form.value.password1);
+      this.registerService.registrarEstudiante(
+        form.value.names,
+        form.value.surnames,
+        form.value.id_documment,
+        form.value.username,
+        form.value.password1);
+    }
+  }
+
 }

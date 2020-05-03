@@ -9,7 +9,7 @@ import { CursoComponent } from './components/curso/curso.component';
 const routes: Routes =[
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'registro',
     pathMatch: 'full',
   }, {
     path: '',
@@ -21,7 +21,7 @@ const routes: Routes =[
   }]},
   {
     path: '**',
-    redirectTo: 'dashboard'
+    redirectTo: 'registro'
   }
 ];
 

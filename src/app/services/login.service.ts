@@ -1,25 +1,21 @@
 import { Injectable } from '@angular/core';
 import {Apollo, Mutation, QueryRef} from 'apollo-angular';
 import gql from 'graphql-tag';
-import {Router} from '@angular/router';
-
-
+import {Router, RouterModule} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
+export class LoginService {
 
-export class RegisterService {
   constructor(private apollo: Apollo, private router: Router) {
+    // console.log("ENTRO AL SERVICIO");
   }
 
-  registrarEstudiante($names: string, $surnames: string, $id_documment: number, $username: string, $password: string) {
-    const REGISTRAR_QUERY = gql`
+  login($username: string, $password: string) {
+    const LOGIN_QUERY = gql`
       mutation {
-        registrarEstudiante( user:{
-          names: "${$names}"
-          surnames: "${$surnames}"
-          id_documment: ${$id_documment}
+        login( credentials:{
           username: "${$username}"
           password: "${$password}"
 
@@ -28,19 +24,19 @@ export class RegisterService {
         }
       }
     `;
-    console.log(REGISTRAR_QUERY.loc.source.body);
-    console.log($names, $surnames, $id_documment, $username, $password);
+    console.log(LOGIN_QUERY.loc.source.body);
     this.apollo.mutate({
-      mutation: REGISTRAR_QUERY,
+      mutation: LOGIN_QUERY,
       variables: {}
     }).subscribe((data) => {
       console.log('-----------------');
       console.log(data.data);
       this.router.navigate(['/dashboard']);
+
     }, (error) => {
       console.log(error);
+      alert('Error: Datos inválidos, intente nuevamente');
     });
   }
 
 }
-
