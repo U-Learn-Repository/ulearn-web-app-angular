@@ -1,36 +1,41 @@
 import { Injectable } from '@angular/core';
-import {Apollo, QueryRef} from 'apollo-angular';
+import {Apollo, Mutation, QueryRef} from 'apollo-angular';
 import gql from 'graphql-tag';
+
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class RegisterService {
-  registro: any[] = [];
 
-  private query: QueryRef<any>;
+export class RegisterService extends Mutation {
+  registrarEstudiante($names: string, $surnames: string, $id_documment: number, $username: string, $password: string) {
+    const REGISTRAR_QUERY = gql`
+      mutation {
+        registrarEstudiante( user:{
+          names: "${$names}"
+          surnames: "${$surnames}"
+          id_documment: ${$id_documment}
+          username: "${$username}"
+          password: "${$password}"
 
-  constructor(private apollo: Apollo) {
-    console.log('ENTRO AL SERVICIO DE REGISTRO');
-  }
-  buscarUsuario(userId: number) {
-    const REGISTER_QUERY = gql`
-      query{
-        buscarUsuario(userId: ${userId}){
-          names
-          id
-          idDocumment
+        }){
+          username
         }
       }
     `;
-    this.query = this.apollo.watchQuery({
-      query: REGISTER_QUERY,
+    console.log(REGISTRAR_QUERY.loc.source.body);
+    console.log($names, $surnames, $id_documment, $username, $password);
+    this.apollo.mutate({
+      mutation: REGISTRAR_QUERY,
       variables: {}
-    });
-
-    this.query.valueChanges.subscribe(result => {
-      this.registro = result.data && result.data.employees;
-      console.log(result);
+    }).subscribe((data) => {
+      console.log('-----------------');
+      console.log(data.data);
+    }, (error) => {
+      console.log(error);
     });
   }
+
 }
+

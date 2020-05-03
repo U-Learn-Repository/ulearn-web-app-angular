@@ -27,6 +27,8 @@ import { CursoComponent } from '../../components/curso/curso.component';
     FormsModule,
     ChartsModule,
     NgbModule,
+    FormsModule,
+    ReactiveFormsModule,
     ToastrModule.forRoot()
   ],
   declarations: [
