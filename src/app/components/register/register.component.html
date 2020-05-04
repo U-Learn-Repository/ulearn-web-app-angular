@@ -2,80 +2,77 @@
 </div>
 
 <div class="main-content">
-  <div class="row">
-    <div class="col-md-10">
-      <div class="card">
-        <div class="card-header">
-          <h5 class="title">Registro</h5>
+    <div class="row">
+        <div class="col-md-10">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="title">Registro</h5>
+                </div>
+                <div class="card-body">
+                    <form #signupForm="ngForm" (ngSubmit)="registrarEstudiante(signupForm)">
+                        <div class="row">
+                            <div class="col-md-6 pr-1">
+                                <div class="form-group">
+                                    <label>Nombre de usuario</label>
+                                    <input type="text" name="username" class="form-control" placeholder="Tu nombre de usuario aquí (máx.10 caracteres)" id="username" ngModel>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 pr-1">
+                                <div class="form-group">
+                                    <label>Nombres</label>
+                                    <input type="text" name="names" class="form-control" placeholder="Tus nombres aquí" id="names" ngModel>
+                                </div>
+                            </div>
+                            <div class="col-md-6 pl-1">
+                                <div class="form-group">
+                                    <label>Apellidos</label>
+                                    <input type="text" name="surnames" class="form-control" placeholder="Tus apellidos aquí" id="surnames" ngModel>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Documento de identidad</label>
+                                    <input type="number" name="id_documment" class="form-control" placeholder="Tu documento de identidad, sin puntos ni comas, aquí" id="id_documment" ngModel>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 pr-1">
+                                <div class="form-group">
+                                    <label>Contraseña</label>
+                                    <input type="password" name="password1" class="form-control" placeholder="Debe incluir al menos una letra mayúscula, una letra minúscula, y un número." id="password1" ngModel>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 pr-1">
+                                <div class="form-group">
+                                    <label>Confirma tu contraseña</label>
+                                    <input type="password" name="password2" class="form-control" placeholder="Confirma tu contraseña aquí" id="password2" ngModel>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <p class="text-info" href="http://localhost:4200/login">
+                            ¿Ya tienes una cuenta? Inicia sesión
+                        </p>
+                        <button type="submit" class="btn btn-primary">Registrarse</button>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="card-body">
-          <form #signupForm="ngForm" (ngSubmit)="registrarEstudiante(signupForm)">
-            <div class="row">
-              <div class="col-md-6 pr-1">
-                <div class="form-group">
-                  <label>Nombre de usuario</label>
-                  <input type="text" name="username" class="form-control" placeholder="Tu nombre de usuario aquí (máx.10 caracteres)" id ="username"  ngModel>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6 pr-1">
-                <div class="form-group">
-                  <label>Nombres</label>
-                  <input type="text" name="names" class="form-control" placeholder="Tus nombres aquí" id="names" ngModel >
-                </div>
-              </div>
-              <div class="col-md-6 pl-1">
-                <div class="form-group">
-                  <label>Apellidos</label>
-                  <input type="text" name="surnames" class="form-control" placeholder="Tus apellidos aquí" id="surnames" ngModel>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label>Documento de identidad</label>
-                  <input type="number" name="id_documment" class="form-control" placeholder="Tu documento de identidad, sin puntos ni comas, aquí"  id="id_documment" ngModel>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12 pr-1">
-                <div class="form-group">
-                  <label>Contraseña</label>
-                  <input type="password" name="password1" class="form-control" placeholder="Debe incluir al menos una letra mayúscula, una letra minúscula, y un número."  id="password1" ngModel>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12 pr-1">
-                <div class="form-group">
-                  <label>Confirma tu contraseña</label>
-                  <input type="password" name="password2" class="form-control" placeholder="Confirma tu contraseña aquí"  id="password2" ngModel>
-                </div>
-              </div>
-            </div>
 
-
-            <p class="text-info" href="http://localhost:4200/login">
-              ¿Ya tienes una cuenta? Inicia sesión
-            </p>
-            <button type="submit">Registrarse</button>
-          </form>
+    </div>
+    <div class="row">
+        <div class="col-md-10">
+            <div class="image-container">
+                <img src="../assets/img/U_Learn_Logo.png" width="1000" height="320">
+            </div>
         </div>
-      </div>
     </div>
-
-  </div>
-  <div class="row">
-    <div class="col-md-10">
-      <div class="image-container" >
-        <img src="../assets/img/U_Learn_Logo.png"  width="1000" height="320">
-      </div>
-    </div>
-  </div>
 </div>
-
-
-

@@ -28,6 +28,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'registro',       component: RegisterComponent},
     { path: 'login',          component: LoginComponent},
     { path: 'profile',        component: ProfileComponent},
-    { path: 'curso',          component: CursoComponent},
     { path: 'create-quiz',        component: QuizzesComponent},
+    { path: 'curso/:idCurso',          component: CursoComponent}
 ];

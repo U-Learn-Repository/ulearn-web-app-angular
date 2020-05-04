@@ -8,9 +8,17 @@
                     <h4 class="card-title">Listado de cursos</h4>
                 </div>
                 <div class="card-body">
+                    <button routerLink="/curso/nuevo" class="btn btn-primary">
+                        <i class="fa fa-plus">
+                            Agregar
+                        </i>
+                    </button>
                     <div class="table-responsive">
                         <table class="table">
                             <thead class=" text-primary">
+                                <th scope="col">
+                                    #
+                                </th>
                                 <th scope="col">
                                     ID
                                 </th>
@@ -26,26 +34,39 @@
                                 <th class="text-right" scope="col">
                                     Profesor
                                 </th>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let curso of cursos">
-                                    <td>
-                                        {{curso.idCurso}}
-                                    </td>
-                                    <td>
-                                        {{curso.nombre}}
-                                    </td>
-                                    <td>
-                                        {{curso.categoria}}
-                                    </td>
-                                    <td>
-                                        {{curso.duracion}} horas
-                                    </td>
-                                    <td class="text-right">
-                                        {{curso.idProfesor}}
-                                    </td>
-                                </tr>
-                            </tbody>
+                                <th scope="col">
+                                    Acciones
+                                </th>
+                                <tbody>
+                                    <tr *ngFor="let curso of cursos let i = index">
+                                        <td>
+                                            {{i+1}}
+                                        </td>
+                                        <td>
+                                            {{curso.idCurso}}
+                                        </td>
+                                        <td>
+                                            {{curso.nombre}}
+                                        </td>
+                                        <td>
+                                            {{curso.categoria}}
+                                        </td>
+                                        <td>
+                                            {{curso.duracion}} horas
+                                        </td>
+                                        <td class="text-right">
+                                            {{curso.idProfesor}}
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-info mr-5" [routerLink]="['/curso', curso.idCurso]">
+                                                Editar
+                                            </button>
+                                            <button class="btn btn-danger mr" (click)="borrarCurso(curso, i)">
+                                                Eliminar
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
                         </table>
                     </div>
                 </div>

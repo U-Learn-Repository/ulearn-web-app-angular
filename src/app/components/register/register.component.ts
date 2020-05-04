@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { RegisterService  } from '../../services/register.service';
 import {NgForm} from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -71,6 +72,13 @@ export class RegisterComponent implements OnInit {
 
   registrarEstudiante(form: NgForm) {
     if (this.checkForm(form)) {
+      Swal.fire({
+        title: 'Espere',
+        text: 'Guardando informacion',
+        icon: 'info',
+        allowOutsideClick: false
+      });
+      Swal.showLoading();
       console.log(form.value.names);
       console.log(form.value.surnames);
       console.log(form.value.id_documment);
@@ -82,6 +90,11 @@ export class RegisterComponent implements OnInit {
         form.value.id_documment,
         form.value.username,
         form.value.password1);
+        Swal.fire({
+          title: form.value.names,
+          text: 'Se registró correctamente',
+          icon: 'success'
+        }) 
     }
   }
 

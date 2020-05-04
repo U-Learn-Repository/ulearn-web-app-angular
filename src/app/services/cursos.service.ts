@@ -8,7 +8,7 @@ import { CursoModel } from '../models/curso.model';
 })
 export class CursosService {
   
-
+  curso: CursoModel;
   cursos: CursoModel[];
 
   private query: QueryRef<any>;
@@ -17,30 +17,32 @@ export class CursosService {
     // console.log("ENTRO AL SERVICIO");
    }
 
-   getCursoById(idCurso: number){
-    let cursosTemp: CursoModel[]
-    const CURSO_QUERY = gql`
-    query{
-      buscarCursoID(courseId:${idCurso}){
-        idCurso
-        nombre
-        categoria
-        duracion
-      }
-    }
-    `;
-    this.query = this.apollo.watchQuery({
-      query: CURSO_QUERY,
-      variables: {}
-    });
-
-    this.query.valueChanges.subscribe(result => {
-       this.cursos = result.data && result.data.buscarCursoID;
-       //console.log(this.cursos);
-       cursosTemp = this.cursos
-    });
-    console.log("busqueda por ID");
-    console.log(cursosTemp);
+   async getCursoById(idCurso: number){
+     return await new Promise<CursoModel>((resolve) => {
+       setTimeout(() => {
+        const CURSO_QUERY = gql`
+        query{
+          buscarCursoID(courseId:${idCurso}){
+            idCurso
+            nombre
+            categoria
+            duracion
+            idProfesor
+          }
+        }
+        `;
+        this.query = this.apollo.watchQuery({
+          query: CURSO_QUERY,
+          variables: {}
+        });
+    
+        this.query.valueChanges.subscribe(result => {
+           this.curso = result.data && result.data.buscarCursoID;
+           resolve(this.curso);
+        });
+       })
+     })
+    
   }
 
     async getAllCursos(){
@@ -65,7 +67,7 @@ export class CursosService {
      
     this.query.valueChanges.subscribe(result => {
       this.cursos =  result.data && result.data.listarCursos;        
-      resolve(this.cursos)
+      resolve(this.cursos);
      // return this.cursos
     });
   });
@@ -73,20 +75,67 @@ export class CursosService {
 
   }
 
-  registrarCurso() {
+  guardarCurso(curso: CursoModel) {
     const CURSO_QUERY = gql`
     mutation {
       crearCurso(curso: {
-        nombre: "PYTHON PRUEBA3"
-        categoria: "PYTHON"
-        duracion: 31
-        idProfesor: 1
+        nombre: "${curso.nombre}"
+        categoria: "${curso.categoria}"
+        duracion: ${curso.duracion}
+        idProfesor: ${curso.idProfesor}
       }) {
         nombre,
         categoria,
         duracion,
         idProfesor
       }
+    }
+    `;
+    this.apollo.mutate({
+      mutation: CURSO_QUERY,
+      variables:{}
+    }).subscribe((data) => {
+      console.log("-----------------");
+      console.log(data);
+    },(error) => {
+      console.log(error);
+    })
+  }
+
+  editarCurso(curso: CursoModel) {
+    const CURSO_QUERY = gql`
+    mutation {
+      updateCurso(curso: {
+        idCurso:${curso.idCurso}
+        nombre: "${curso.nombre}"
+        categoria: "${curso.categoria}"
+        duracion: ${curso.duracion}
+        idProfesor: ${curso.idProfesor}
+      }) {
+        nombre,
+        categoria,
+        duracion,
+        idProfesor
+      }
+    }
+    `;
+    this.apollo.mutate({
+      mutation: CURSO_QUERY,
+      variables:{}
+    }).subscribe((data) => {
+      console.log("-----------------");
+      console.log(data.data);
+    },(error) => {
+      console.log(error);
+    })
+  }
+
+  borrarCurso(idCurso: number){
+    const CURSO_QUERY = gql`
+    mutation{
+      deleteCurso(
+        idCurso: ${idCurso}
+      )
     }
     `;
     this.apollo.mutate({
