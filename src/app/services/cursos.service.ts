@@ -105,12 +105,12 @@ export class CursosService {
   editarCurso(curso: CursoModel) {
     const CURSO_QUERY = gql`
     mutation {
-      updateCurso(curso: {
-        idCurso:${curso.idCurso}
-        nombre: "${curso.nombre}"
-        categoria: "${curso.categoria}"
-        duracion: ${curso.duracion}
-        idProfesor: ${curso.idProfesor}
+      updateCurso(idCurso:${curso.idCurso}
+        curso: {
+          nombre: "${curso.nombre}"
+          categoria: "${curso.categoria}"
+          duracion: ${curso.duracion}
+          idProfesor: ${curso.idProfesor}
       }) {
         nombre,
         categoria,
