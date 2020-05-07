@@ -4,11 +4,12 @@ import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { CursoComponent } from './components/curso/curso.component';
 
 const routes: Routes =[
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'registro',
     pathMatch: 'full',
   }, {
     path: '',
@@ -20,7 +21,7 @@ const routes: Routes =[
   }]},
   {
     path: '**',
-    redirectTo: 'dashboard'
+    redirectTo: 'registro'
   }
 ];
 

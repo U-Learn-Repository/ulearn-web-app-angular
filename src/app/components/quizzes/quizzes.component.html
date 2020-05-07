@@ -1,0 +1,121 @@
+<div class="panel-header panel-header-sm">
+</div>
+
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-10">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="title">Crear Quiz</h5>
+        </div>
+        <div class="card-body">
+
+
+          <form>
+            <div class="row">
+              <div class="col-md-8 pr-1">
+                <div class="form-group">
+                  <label>Nombre de usuario</label>
+                  <input name="statement"  [(ngModel)]="statement" type="text" class="form-control" placeholder="Escribe la pregunta de quiz" >
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-group col-md-8">
+
+                <div class="input-group-prepend">
+                  <span class="input-group-text" style="padding: 6px 0 6px 12px !important;">Respuesta 1</span>
+                </div>
+
+                <input name="ans1"  [(ngModel)]="ans1" type="text" class="form-control" placeholder="Escribe la respuesta 1 del quiz" aria-label="answer1" aria-describedby="basic-addon1">
+
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-group col-md-8">
+
+                <div class="input-group-prepend">
+                  <span class="input-group-text" style="padding: 6px 0 6px 12px !important;">Respuesta 2</span>
+                </div>
+
+                <input name="ans2" [(ngModel)]="ans2" type="text" class="form-control" placeholder="Escribe la respuesta 2 del quiz" aria-label="anwer2" aria-describedby="basic-addon1">
+
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-group col-md-8">
+
+                <div class="input-group-prepend">
+                  <span class="input-group-text" style="padding: 6px 0 6px 12px !important;">Respuesta 3</span>
+                </div>
+
+                <input name="ans3"  [(ngModel)]="ans3" type="text" class="form-control" placeholder="Escribe la respuesta 3 del quiz" aria-label="answer3" aria-describedby="basic-addon1">
+
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-group col-md-8">
+
+                <div class="input-group-prepend">
+                  <span class="input-group-text" style="padding: 6px 0 6px 12px !important;">Respuesta 4</span>
+                </div>
+
+                <input name="ans4" [(ngModel)]="ans4" type="text" class="form-control" placeholder="Escribe la respuesta 4 del quiz" aria-label="answer4" aria-describedby="basic-addon1">
+
+              </div>
+            </div>
+            
+            <h4>
+              <span class="badge badge-success">¿Cual es la respuesta correcta?</span>
+            </h4>
+
+            <div class="col-md-12">
+              <label class="btn btn-warning" style="color: #000;">
+                <input #radio1 type="radio" checked="true" (click)="onClick(radio1.value)" name="radio" value="1">
+                respuesta 1
+              </label>
+
+              <label class="btn btn-warning" style="color: #000;">
+                <input #radio2 type="radio" (click)="onClick(radio2.value)"  name="radio" value="2">
+                respuesta 2
+              </label>
+
+              <label class="btn btn-warning" style="color: #000;">
+                <input #radio3 type="radio" (click)="onClick(radio3.value)" name="radio" value="3">
+                respuesta 3
+              </label>
+
+              <label class="btn btn-warning" style="color: #000;">
+                <input #radio4 type="radio" (click)="onClick(radio4.value)" name="radio" value="4">
+                respuesta 4
+              </label>
+          </div>
+
+          <span class="badge badge-danger"  name="err" [(ngModel)]="err">
+            {{err}}
+          </span>
+          <br/>
+
+            <button class="btn btn-success" (click)="onClickMe()">
+              Crear Quiz
+            </button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-10">
+      <div class="image-container" >
+        <img src="../assets/img/U_Learn_Logo.png"  width="1000" height="320">
+      </div>
+    </div>
+  </div>
+</div>
