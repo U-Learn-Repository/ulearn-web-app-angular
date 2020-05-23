@@ -13,6 +13,14 @@ import { AppComponent } from './app.component';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { GraphQLModule } from './graphql.module';
+import { CursoComponent } from './components/curso/curso.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { CursosComponent } from './components/cursos/cursos.component';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
+import { ProfileComponent } from './profile/profile.component';
+import { QuizzesComponent } from './components/quizzes/quizzes.component';
 
 @NgModule({
   imports: [
@@ -28,7 +36,16 @@ import { GraphQLModule } from './graphql.module';
   ],
   declarations: [
     AppComponent,
-    AdminLayoutComponent
+    AdminLayoutComponent,
+    CursoComponent,
+    DashboardComponent,
+    UserProfileComponent,
+    CursosComponent,  
+    RegisterComponent,
+    LoginComponent,
+    ProfileComponent,
+    QuizzesComponent,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

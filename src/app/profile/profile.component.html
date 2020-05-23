@@ -1,39 +1,39 @@
 <div class="panel-header panel-header-sm">
 </div>
 <div class="main-content">
-  <div class="row">
-    <div class="col-md-4">
-      <div class="card card-user">
-        <div class="image">
-          <img src="../assets/img/bg5.jpg" alt="...">
-        </div>
-        <div class="card-body">
-          <div class="author">
-            <a href="#">
-              <img class="avatar border-gray" src="../assets/img/user.jpg" alt="...">
-              <h5 class="title">Nombres Apellidos</h5>
-            </a>
-            <p class="description">
-              username
-            </p>
-          </div>
-          <p class="description text-center">
-            <button type="button" name="editarPerfilBT" [routerLink]="['/user-profile']" class="btn btn-primary">Editar Perfil</button>
-          </p>
-        </div>
-        <hr>
-        <div class="button-container">
-          <button href="#" class="btn btn-neutral btn-icon btn-round btn-lg">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card card-user">
+                <div class="image">
+                    <img src="../assets/img/bg5.jpg" alt="...">
+                </div>
+                <div class="card-body">
+                    <div class="author">
+                        <a>
+                            <img class="avatar border-gray" src="../assets/img/user.jpg" alt="...">
+                            <h5 class="title">{{nombreUsuario}} {{apellidoUsuario}}</h5>
+                        </a>
+                        <p class="description">
+                            {{username}}
+                        </p>
+                    </div>
+                    <p class="description text-center">
+                        <button type="button" name="editarPerfilBT" [routerLink]="['/user-profile']" class="btn btn-primary">Editar Perfil</button>
+                    </p>
+                </div>
+                <hr>
+                <div class="button-container">
+                    <button href="#" class="btn btn-neutral btn-icon btn-round btn-lg">
             <i class="fab fa-facebook-f"></i>
           </button>
-          <button href="#" class="btn btn-neutral btn-icon btn-round btn-lg">
+                    <button href="#" class="btn btn-neutral btn-icon btn-round btn-lg">
             <i class="fab fa-twitter"></i>
           </button>
-          <button href="#" class="btn btn-neutral btn-icon btn-round btn-lg">
+                    <button href="#" class="btn btn-neutral btn-icon btn-round btn-lg">
             <i class="fab fa-google-plus-g"></i>
           </button>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>

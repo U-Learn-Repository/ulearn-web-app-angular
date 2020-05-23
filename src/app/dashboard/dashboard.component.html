@@ -1,43 +1,42 @@
 <div class="panel-header">
-  <div class="header text-center">
-    <h2 class="title">Bienvenido/a</h2>
-  </div>
+    <div class="header text-center">
+        <h2 class="title">BIENVENIDO/A {{nombreUsuario}} {{apellidoUsuario}}</h2>
+    </div>
 </div>
 
 <div class="main-content">
-  <div class="row">
-    <div class="col-lg-4">
-      <div class="card card-chart">
+    <div class="row">
+        <div *ngIf="userRol !== 'Profesor'" class="col-lg-4">
+            <div class="card card-chart">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Aprende con nosotros</h5>
+                    <p *ngIf="userRol==='Profesor'" class="card-text ">Agrega, edita o elimina tus cursos.</p>
+                    <p *ngIf="userRol!=='Profesor' && userRol!=='Estudiante' " class="card-text ">Puedes ver la gran variedad de cursos que tenemos para ti.</p>
+                    <p *ngIf="userRol==='Estudiante'" class="card-text ">Ofrecemos una gran variedad de cursos. Inscribete al que tu quieras.</p>
+                    <button type="button " name="listarCursosBT " [routerLink]="[ '/cursos'] " class="btn btn-primary ">Ver cursos</button>
+                </div>
 
-        <div class="card-body text-center">
-          <h5 class="card-title">Aprende con nosotros</h5>
-    <p class="card-text">Ofrecemos una gran variedad de cursos. Inscribete al que tu quieras.</p>
-    <button type="button" name="listarCursosBT" [routerLink]="['/cursos']" class="btn btn-primary">Mas información</button>
-
+            </div>
         </div>
-
-      </div>
-    </div>
-    <div class="col-lg-4 col-md-6">
-      <div class="card card-chart">
-
-        <div class="card-body text-center">
-          <h5 class="card-title">Cursos inscritos</h5>
-          <p class="card-text">Continua con los cursos que tienes inscritos.</p>
-          <button type="button" name="verMisCursosBT" [routerLink]="['/miscursos']" class="btn btn-primary">Ver mis cursos</button>
+        <div *ngIf="userRol==='Estudiante' " class="col-lg-4 col-md-6 ">
+            <div class="card card-chart ">
+                <div class="card-body text-center ">
+                    <h5 class="card-title ">Cursos inscritos</h5>
+                    <p class="card-text ">Continua con los cursos que tienes inscritos.</p>
+                    <button type="button " name="verMisCursosBT " [routerLink]="[ '/miscursos'] " class="btn btn-primary ">Ver mis cursos</button>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="col-lg-4 col-md-6">
-      <div class="card card-chart">
-        <div class="card-body text-center">
-          <h5 class="card-title">Certificados</h5>
-          <p class="card-text">Aquí puedes consultar los certificados de los cursos que ha terminado.</p>
-          <button type="button" name="verMisCursosBT" [routerLink]="['/certificados']" class="btn btn-primary">Ver mis cursos</button>
+        <div *ngIf="userRol==='Estudiante' " class="col-lg-4 col-md-6 ">
+            <div class="card card-chart ">
+                <div class="card-body text-center ">
+                    <h5 class="card-title ">Certificados</h5>
+                    <p class="card-text ">Aquí puedes consultar los certificados de los cursos que ha terminado.</p>
+                    <button type="button " name="verMisCursosBT " [routerLink]="[ '/certificados'] " class="btn btn-primary ">Ver mis cursos</button>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-  <div class="row">
-  </div>
+    <div class="row ">
+    </div>
 </div>

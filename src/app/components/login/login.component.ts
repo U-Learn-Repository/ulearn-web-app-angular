@@ -20,5 +20,7 @@ export class LoginComponent implements OnInit {
     this.loginService.login(
       form.value.username,
       form.value.password);
+   // this.loginService.guardarInfoUser(form.value.username);
+
   }
 }

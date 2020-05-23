@@ -8,8 +8,16 @@ import * as Chartist from 'chartist';
 })
 export class DashboardComponent implements OnInit {
   
+  nombreUsuario
+  apellidoUsuario
+  userRol = localStorage.getItem('roleUser')
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() {  
+    this.nombreUsuario = localStorage.getItem('names'); 
+    this.apellidoUsuario = localStorage.getItem('surnames');
+    if(this.nombreUsuario == null){
+      this.nombreUsuario = 'USUARIO'
+    }
   }
 }

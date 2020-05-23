@@ -8,7 +8,7 @@
                     <h4 class="card-title">Listado de cursos</h4>
                 </div>
                 <div class="card-body">
-                    <button routerLink="/curso/nuevo" class="btn btn-primary">
+                    <button *ngIf="userRol === 'Profesor'" routerLink="/curso/nuevo" class="btn btn-primary">
                         <i class="fa fa-plus">
                             Agregar
                         </i>
@@ -19,7 +19,7 @@
                                 <th scope="col">
                                     #
                                 </th>
-                                <th scope="col">
+                                <th *ngIf="userRol === 'Profesor'" scope="col">
                                     ID
                                 </th>
                                 <th scope="col">
@@ -31,10 +31,10 @@
                                 <th scope="col">
                                     Duración
                                 </th>
-                                <th class="text-right" scope="col">
+                                <th *ngIf="userRol === 'Profesor'" class="text-right" scope="col">
                                     Profesor
                                 </th>
-                                <th scope="col">
+                                <th *ngIf="userRol === 'Profesor' || userRol === 'Estudiante'" scope="col">
                                     Acciones
                                 </th>
                                 <tbody>
@@ -42,7 +42,7 @@
                                         <td>
                                             {{i+1}}
                                         </td>
-                                        <td>
+                                        <td *ngIf="userRol === 'Profesor'">
                                             {{curso.idCurso}}
                                         </td>
                                         <td>
@@ -54,14 +54,17 @@
                                         <td>
                                             {{curso.duracion}} horas
                                         </td>
-                                        <td class="text-right">
+                                        <td *ngIf="userRol === 'Profesor'" class="text-right">
                                             {{curso.idProfesor}}
                                         </td>
                                         <td>
-                                            <button class="btn btn-info mr-5" [routerLink]="['/curso', curso.idCurso]">
+                                            <button *ngIf="userRol === 'Estudiante'" class="btn btn-info mr-5" [routerLink]="['/curso', curso.idCurso]">
+                                                Inscribir
+                                            </button>
+                                            <button *ngIf="userRol === 'Profesor'" class="btn btn-info mr-5" [routerLink]="['/curso', curso.idCurso]">
                                                 Editar
                                             </button>
-                                            <button class="btn btn-danger mr" (click)="borrarCurso(curso, i)">
+                                            <button *ngIf="userRol === 'Profesor'" class="btn btn-danger mr" (click)="borrarCurso(curso, i)">
                                                 Eliminar
                                             </button>
                                         </td>

@@ -18,7 +18,7 @@ import { CursosComponent } from '../../components/cursos/cursos.component';
 import { RegisterComponent} from '../../components/register/register.component';
 import {LoginComponent} from '../../components/login/login.component';
 import { ProfileComponent } from '../../profile/profile.component';
-import { CursoComponent } from '../../components/curso/curso.component';
+//import { CursoComponent } from '../../components/curso/curso.component';
 import { QuizzesComponent } from '../../components/quizzes/quizzes.component'
 import { from } from 'rxjs';
 
@@ -32,20 +32,20 @@ import { from } from 'rxjs';
     ToastrModule.forRoot()
   ],
   declarations: [
-    DashboardComponent,
-    UserProfileComponent,
+   // DashboardComponent,
+   // UserProfileComponent,
     TableListComponent,
     UpgradeComponent,
     TypographyComponent,
     IconsComponent,
     MapsComponent,
     NotificationsComponent,
-    CursosComponent,
-    RegisterComponent,
-    LoginComponent,
-    ProfileComponent,
-    CursoComponent,
-    QuizzesComponent
+    //CursosComponent,
+    //RegisterComponent,
+    //LoginComponent,
+    //ProfileComponent,
+   // CursoComponent,
+    //QuizzesComponent
   ]
 })
 

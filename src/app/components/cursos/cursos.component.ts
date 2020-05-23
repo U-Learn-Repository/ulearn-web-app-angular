@@ -13,6 +13,7 @@ export class CursosComponent implements OnInit {
 
   cursos: CursoModel[] = [];
   curso: CursoModel;
+  userRol = localStorage.getItem('roleUser')
 
   constructor(private cursosService: CursosService) { }
 

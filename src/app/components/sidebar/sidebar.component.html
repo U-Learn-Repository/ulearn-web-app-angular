@@ -1,17 +1,32 @@
-
 <div class="logo">
-    <a  class="simple-text logo-mini">
-      <div class="logo-img">
-          <img src="./assets/img/ULearn_icon.png  "/>
-      </div>
+    <a class="simple-text logo-mini">
+        <div class="logo-img">
+            <img src="./assets/img/ULearn_icon.png  " />
+        </div>
     </a>
-    <a href="https://www.creative-tim.com" class="simple-text logo-normal">
+    <a href="https://github.com/U-Learn-Repository" class="simple-text logo-normal">
         ULearn
     </a>
 </div>
 <div class="sidebar-wrapper">
-    <ul class="nav">
-        <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
+    <ul *ngIf="userRole === 'Profesor'" class="nav">
+        <li routerLinkActive="active" *ngFor="let menuItem of menuItemsProfesor" class="{{menuItem.class}} nav-item">
+            <a [routerLink]="[menuItem.path]">
+                <i class="now-ui-icons {{menuItem.icon}}"></i>
+                <p>{{menuItem.title}}</p>
+            </a>
+        </li>
+    </ul>
+    <ul *ngIf="userRole === 'Estudiante'" class="nav">
+        <li routerLinkActive="active" *ngFor="let menuItem of menuItemsEstudiante" class="{{menuItem.class}} nav-item">
+            <a [routerLink]="[menuItem.path]">
+                <i class="now-ui-icons {{menuItem.icon}}"></i>
+                <p>{{menuItem.title}}</p>
+            </a>
+        </li>
+    </ul>
+    <ul *ngIf="userRole !== 'Profesor' && userRole !== 'Estudiante'" class="nav">
+        <li routerLinkActive="active" *ngFor="let menuItem of menuItemsUser" class="{{menuItem.class}} nav-item">
             <a [routerLink]="[menuItem.path]">
                 <i class="now-ui-icons {{menuItem.icon}}"></i>
                 <p>{{menuItem.title}}</p>

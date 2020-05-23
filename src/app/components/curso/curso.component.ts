@@ -13,7 +13,7 @@ import Swal from 'sweetalert2'
 export class CursoComponent implements OnInit {
 
   curso: CursoModel = new CursoModel();
-  idCurso
+  idCurso  
  constructor (private cursosService: CursosService, private route: ActivatedRoute) { }
 
   ngOnInit() {
