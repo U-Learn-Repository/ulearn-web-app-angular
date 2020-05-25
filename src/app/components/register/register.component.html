@@ -9,7 +9,16 @@
                     <h5 class="title">Registro</h5>
                 </div>
                 <div class="card-body">
-                    <form #signupForm="ngForm" (ngSubmit)="registrarEstudiante(signupForm)">
+                    <form #signupForm="ngForm" (ngSubmit)="registrar(signupForm)">
+                        <div class="row">
+                          <div class="col-md-6 pr-1">
+                            <label for="Role">¿Deseas registrarte como profesor o estudiante?</label>
+                            <select id="Role" name="Role" ngModel>
+                              <option value="Profesor">Profesor</option>
+                              <option value="Estudiante">Estudiante</option>
+                            </select>
+                          </div>
+                        </div>
                         <div class="row">
                             <div class="col-md-6 pr-1">
                                 <div class="form-group">

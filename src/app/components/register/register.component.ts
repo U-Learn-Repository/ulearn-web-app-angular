@@ -18,6 +18,10 @@ export class RegisterComponent implements OnInit {
   }
 
   checkForm(form: NgForm) {
+    if (form.value.Role === '') {
+      alert ('Error: Debes seleccionar si registrarte como profesor o estudiante');
+      return false;
+    }
     if (form.value.username === '') {
       alert('Error: Nombre de usuario no puede estar vacío');
       return false;
@@ -70,7 +74,20 @@ export class RegisterComponent implements OnInit {
     return true;
   }
 
+  registrar(form: NgForm) {
+    console.log('En registrar');
+    if (this.checkForm(form)) {
+      console.log(form.value.Role);
+      if (form.value.Role === 'Profesor') {
+          this.registrarProfesor(form);
+      } else if (form.value.Role === 'Estudiante') {
+          this.registrarEstudiante(form);
+      }
+    }
+  }
+
   registrarEstudiante(form: NgForm) {
+    console.log('En registrar estudiante');
     if (this.checkForm(form)) {
       Swal.fire({
         title: 'Espere',
@@ -94,7 +111,37 @@ export class RegisterComponent implements OnInit {
           title: form.value.names,
           text: 'Se registró correctamente',
           icon: 'success'
-        }) 
+        });
+    }
+  }
+
+
+  registrarProfesor(form: NgForm) {
+    console.log('En registrar profesor');
+    if (this.checkForm(form)) {
+      Swal.fire({
+        title: 'Espere',
+        text: 'Guardando informacion',
+        icon: 'info',
+        allowOutsideClick: false
+      });
+      Swal.showLoading();
+      console.log(form.value.names);
+      console.log(form.value.surnames);
+      console.log(form.value.id_documment);
+      console.log(form.value.username);
+      console.log(form.value.password1);
+      this.registerService.registrarProfesor(
+        form.value.names,
+        form.value.surnames,
+        form.value.id_documment,
+        form.value.username,
+        form.value.password1);
+      Swal.fire({
+        title: form.value.names,
+        text: 'Se registró correctamente',
+        icon: 'success'
+      });
     }
   }
 

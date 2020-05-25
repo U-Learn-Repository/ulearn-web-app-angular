@@ -42,5 +42,33 @@ export class RegisterService {
     });
   }
 
+  registrarProfesor($names: string, $surnames: string, $id_documment: number, $username: string, $password: string) {
+    const REGISTRAR_QUERY = gql`
+      mutation {
+        registrarProfesor( user:{
+          names: "${$names}"
+          surnames: "${$surnames}"
+          id_documment: ${$id_documment}
+          username: "${$username}"
+          password: "${$password}"
+
+        }){
+          username
+        }
+      }
+    `;
+    console.log(REGISTRAR_QUERY.loc.source.body);
+    console.log($names, $surnames, $id_documment, $username, $password);
+    this.apollo.mutate({
+      mutation: REGISTRAR_QUERY,
+      variables: {}
+    }).subscribe((data) => {
+      console.log('-----------------');
+      console.log(data.data);
+      this.router.navigate(['/dashboard']);
+    }, (error) => {
+      console.log(error);
+    });
+  }
 }
 
