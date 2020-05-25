@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Apollo, QueryRef} from 'apollo-angular';
+import { HttpHeaders } from '@angular/common/http';
 import gql from 'graphql-tag';
 import { CursoModel } from '../models/curso.model';
 
@@ -38,17 +39,39 @@ export class QuizzesService {
     var ans3 = this.getQueryInsertAnswer(answers[2], correct == 3);
     var ans4 = this.getQueryInsertAnswer(answers[3], correct == 4);
 
-    const result1 = await this.apollo.mutate<Response>({mutation: ans1}).toPromise()
+    let token = localStorage.getItem('token')
+
+    const result1 = await this.apollo.mutate<Response>({
+      mutation: ans1,
+      context: {
+        headers: new HttpHeaders().set("Authorization",  "Bearer " + token)
+      }
+    }).toPromise()
 
     console.log(result1.data)
     console.log(result1.data.InsertAnswer)
     console.log(result1.data.InsertAnswer.id)
 
-    const result2 = await this.apollo.mutate<Response>({mutation: ans2}).toPromise()
+    const result2 = await this.apollo.mutate<Response>({
+      mutation: ans2,
+      context: {
+        headers: new HttpHeaders().set("Authorization",  "Bearer " + token)
+      }
+    }).toPromise()
 
-    const result3 = await this.apollo.mutate<Response>({mutation: ans3}).toPromise()
+    const result3 = await this.apollo.mutate<Response>({
+      mutation: ans3,
+      context: {
+        headers: new HttpHeaders().set("Authorization",  "Bearer " + token)
+      }
+    }).toPromise()
 
-    const result4 = await this.apollo.mutate<Response>({mutation: ans4}).toPromise()
+    const result4 = await this.apollo.mutate<Response>({
+      mutation: ans4,
+      context: {
+        headers: new HttpHeaders().set("Authorization",  "Bearer " + token)
+      }
+    }).toPromise()
 
     var a1 = result1.data.InsertAnswer.id;
     var a2 = result2.data.InsertAnswer.id;
@@ -57,7 +80,12 @@ export class QuizzesService {
 
     var question = this.getMutationInsertQuestion(statement, a1, a2, a3, a4);
 
-    const resultQuest = await this.apollo.mutate<ResponseQuestion>({mutation: question}).toPromise();
+    const resultQuest = await this.apollo.mutate<ResponseQuestion>({
+      mutation: question,
+      context: {
+        headers: new HttpHeaders().set("Authorization",  "Bearer " + token)
+      }
+    }).toPromise();
 
     if(resultQuest.data.InsertQuestion.statement == statement) {
       alert("Se registro correctamente");

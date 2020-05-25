@@ -1,0 +1,69 @@
+[1mdiff --git a/src/app/services/quizzes.service.ts b/src/app/services/quizzes.service.ts[m
+[1mindex 910ddb6..f6c8702 100644[m
+[1m--- a/src/app/services/quizzes.service.ts[m
+[1m+++ b/src/app/services/quizzes.service.ts[m
+[36m@@ -1,5 +1,6 @@[m
+ import { Injectable } from '@angular/core';[m
+ import {Apollo, QueryRef} from 'apollo-angular';[m
+[32m+[m[32mimport { HttpHeaders } from '@angular/common/http';[m
+ import gql from 'graphql-tag';[m
+ import { CursoModel } from '../models/curso.model';[m
+ [m
+[36m@@ -38,17 +39,39 @@[m [mexport class QuizzesService {[m
+     var ans3 = this.getQueryInsertAnswer(answers[2], correct == 3);[m
+     var ans4 = this.getQueryInsertAnswer(answers[3], correct == 4);[m
+ [m
+[31m-    const result1 = await this.apollo.mutate<Response>({mutation: ans1}).toPromise()[m
+[32m+[m[32m    let token = localStorage.getItem('token')[m
+[32m+[m
+[32m+[m[32m    const result1 = await this.apollo.mutate<Response>({[m
+[32m+[m[32m      mutation: ans1,[m
+[32m+[m[32m      context: {[m
+[32m+[m[32m        headers: new HttpHeaders().set("Authorization",  "Bearer " + token)[m
+[32m+[m[32m      }[m
+[32m+[m[32m    }).toPromise()[m
+ [m
+     console.log(result1.data)[m
+     console.log(result1.data.InsertAnswer)[m
+     console.log(result1.data.InsertAnswer.id)[m
+ [m
+[31m-    const result2 = await this.apollo.mutate<Response>({mutation: ans2}).toPromise()[m
+[32m+[m[32m    const result2 = await this.apollo.mutate<Response>({[m
+[32m+[m[32m      mutation: ans2,[m
+[32m+[m[32m      context: {[m
+[32m+[m[32m        headers: new HttpHeaders().set("Authorization",  "Bearer " + token)[m
+[32m+[m[32m      }[m
+[32m+[m[32m    }).toPromise()[m
+ [m
+[31m-    const result3 = await this.apollo.mutate<Response>({mutation: ans3}).toPromise()[m
+[32m+[m[32m    const result3 = await this.apollo.mutate<Response>({[m
+[32m+[m[32m      mutation: ans3,[m
+[32m+[m[32m      context: {[m
+[32m+[m[32m        headers: new HttpHeaders().set("Authorization",  "Bearer " + token)[m
+[32m+[m[32m      }[m
+[32m+[m[32m    }).toPromise()[m
+ [m
+[31m-    const result4 = await this.apollo.mutate<Response>({mutation: ans4}).toPromise()[m
+[32m+[m[32m    const result4 = await this.apollo.mutate<Response>({[m
+[32m+[m[32m      mutation: ans4,[m
+[32m+[m[32m      context: {[m
+[32m+[m[32m        headers: new HttpHeaders().set("Authorization",  "Bearer " + token)[m
+[32m+[m[32m      }[m
+[32m+[m[32m    }).toPromise()[m
+ [m
+     var a1 = result1.data.InsertAnswer.id;[m
+     var a2 = result2.data.InsertAnswer.id;[m
+[36m@@ -57,7 +80,12 @@[m [mexport class QuizzesService {[m
+ [m
+     var question = this.getMutationInsertQuestion(statement, a1, a2, a3, a4);[m
+ [m
+[31m-    const resultQuest = await this.apollo.mutate<ResponseQuestion>({mutation: question}).toPromise();[m
+[32m+[m[32m    const resultQuest = await this.apollo.mutate<ResponseQuestion>({[m
+[32m+[m[32m      mutation: question,[m
+[32m+[m[32m      context: {[m
+[32m+[m[32m        headers: new HttpHeaders().set("Authorization",  "Bearer " + token)[m
+[32m+[m[32m      }[m
+[32m+[m[32m    }).toPromise();[m
+ [m
+     if(resultQuest.data.InsertQuestion.statement == statement) {[m
+       alert("Se registro correctamente");[m
