@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Apollo, Mutation, QueryRef} from 'apollo-angular';
 import gql from 'graphql-tag';
 import {Router, RouterModule} from '@angular/router';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -65,9 +66,13 @@ export class LoginService {
     }
     `;
     console.log(BUSQUEDA_QUERY.loc.source.body);
+    let token = localStorage.getItem('token')
     this.query = this.apollo.watchQuery({
       query: BUSQUEDA_QUERY,
-      variables: {}
+      variables: {},
+      context: {
+        headers: new HttpHeaders().set("Authorization",  "Bearer " + token)
+      }
     });
     this.query.valueChanges.subscribe((data) => {
       console.log('-----------------');      
@@ -93,11 +98,15 @@ export class LoginService {
             username
           }
         }
-        `;
+        ` ;
         console.log(BUSQUEDA_QUERY.loc.source.body);
+        let token = localStorage.getItem('token')
         this.query = this.apollo.watchQuery({
           query: BUSQUEDA_QUERY,
-          variables: {}
+          variables: {},
+          context: {
+            headers: new HttpHeaders().set("Authorization",  "Bearer " + token)
+          }
         });
         this.query.valueChanges.subscribe((data) => {
           console.log('-----------------');      

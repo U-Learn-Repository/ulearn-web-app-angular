@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Apollo, QueryRef} from 'apollo-angular';
 import gql from 'graphql-tag';
 import { CursoModel } from '../models/curso.model';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -31,9 +32,13 @@ export class CursosService {
           }
         }
         `;
+        let token = localStorage.getItem('token')
         this.query = this.apollo.watchQuery({
           query: CURSO_QUERY,
-          variables: {}
+          variables: {},
+          context: {
+            headers: new HttpHeaders().set("Authorization",  "Bearer " + token)
+          }
         });
     
         this.query.valueChanges.subscribe(result => {
@@ -91,9 +96,13 @@ export class CursosService {
       }
     }
     `;
+    let token = localStorage.getItem('token');
     this.apollo.mutate({
       mutation: CURSO_QUERY,
-      variables:{}
+      variables:{},
+      context: {
+        headers: new HttpHeaders().set("Authorization",  "Bearer " + token)
+      }
     }).subscribe((data) => {
       console.log("-----------------");
       console.log(data);
@@ -119,9 +128,13 @@ export class CursosService {
       }
     }
     `;
+    let token = localStorage.getItem('token');
     this.apollo.mutate({
       mutation: CURSO_QUERY,
-      variables:{}
+      variables:{},
+      context: {
+        headers: new HttpHeaders().set("Authorization",  "Bearer " + token)
+      }
     }).subscribe((data) => {
       console.log("-----------------");
       console.log(data.data);
@@ -138,9 +151,13 @@ export class CursosService {
       )
     }
     `;
+    let token = localStorage.getItem('token');
     this.apollo.mutate({
       mutation: CURSO_QUERY,
-      variables:{}
+      variables:{},
+      context: {
+        headers: new HttpHeaders().set("Authorization",  "Bearer " + token)
+      }
     }).subscribe((data) => {
       console.log("-----------------");
       console.log(data.data);
