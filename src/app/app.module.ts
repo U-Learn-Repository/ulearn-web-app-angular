@@ -21,10 +21,20 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { QuizzesComponent } from './components/quizzes/quizzes.component';
+import { BrowserModule } from '@angular/platform-browser';
+
+import {AngularFireMessagingModule} from '@angular/fire/messaging';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
+import { AngularFireAuthModule} from '@angular/fire/auth';
+import { AngularFireModule } from '@angular/fire';
+import { MessagingService } from './services/messaging.service';
+import { environment } from '../environments/environment';
+import {AsyncPipe} from '../../node_modules/@angular/common' 
 
 @NgModule({
   imports: [
     BrowserAnimationsModule,
+    BrowserModule,
     FormsModule,
     HttpClientModule,
     ComponentsModule,
@@ -33,6 +43,10 @@ import { QuizzesComponent } from './components/quizzes/quizzes.component';
     NgbModule,
     ToastrModule.forRoot(),
     GraphQLModule,
+    AngularFireMessagingModule,
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(environment.firebase),
   ],
   declarations: [
     AppComponent,
@@ -47,7 +61,7 @@ import { QuizzesComponent } from './components/quizzes/quizzes.component';
     QuizzesComponent,
 
   ],
-  providers: [],
+  providers: [MessagingService, AsyncPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
