@@ -8,8 +8,11 @@ import { BehaviorSubject } from "rxjs";
 export class MessagingService {
   currentMessage = new BehaviorSubject(null);
   constructor(private angularFireMessaging: AngularFireMessaging) {
-    this.angularFireMessaging.messaging.subscribe((_messaging) => {
+    this.angularFireMessaging.messaging.subscribe((_messaging: any) => {
       _messaging.onMessage = _messaging.onMessage.bind(_messaging);
+      _messaging._next = (payload: any) => {
+        console.log(payload);
+      };
       _messaging.onTokenRefresh = _messaging.onTokenRefresh.bind(_messaging);
     });
   }
