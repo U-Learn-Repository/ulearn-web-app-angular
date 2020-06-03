@@ -15,13 +15,15 @@ import { ProfileComponent } from './profile/profile.component';
 import { QuizzesComponent } from './components/quizzes/quizzes.component';
 import { AuthLoginGuard } from './guards/auth-login.guard';
 import { NoLoginGuard } from './guards/no-login.guard';
+import {CertificadosComponent} from './components/certificados/certificados.component';
+import {canActivate} from '@angular/fire/auth-guard';
 
 const routes: Routes =[
   {
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full',
-  }, 
+  },
   { path: 'curso/:idCurso', component: CursoComponent, canActivate: [AuthGuardProfesor]},
   { path: 'dashboard',      component: DashboardComponent },
   { path: 'user-profile',   component: UserProfileComponent, canActivate: [NoLoginGuard] },
@@ -29,7 +31,8 @@ const routes: Routes =[
   { path: 'registro',       component: RegisterComponent, canActivate: [AuthLoginGuard]},
   { path: 'login',          component: LoginComponent, canActivate: [AuthLoginGuard]},
   { path: 'profile',        component: ProfileComponent, canActivate: [NoLoginGuard]},
-  { path: 'create-quiz',        component: QuizzesComponent, canActivate: [AuthGuardProfesor]},
+  { path: 'create-quiz',    component: QuizzesComponent, canActivate: [AuthGuardProfesor]},
+  { path: 'certificados',  component: CertificadosComponent},
   {
     path: '',
     component: AdminLayoutComponent,

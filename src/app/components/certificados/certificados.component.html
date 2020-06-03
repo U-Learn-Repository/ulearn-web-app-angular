@@ -1,0 +1,39 @@
+<div class="panel-header panel-header-sm">
+</div>
+
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-10">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="title">Certificados</h5>
+        </div>
+        <div class="card-body">
+          <form #signupForm="ngForm" (ngSubmit)="certificado(signupForm)">
+            <div class="row">
+              <div class="col-md-12 pr-1">
+                <div class="form-group">
+                  <label>Id del curso</label>
+                  <input type="number" class="form-control" placeholder="El ID del curso que aprobaste aquí" name="courseId" id="courseId" ngModel>
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Descarga tu certificado aquí</button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row ">
+    <div class="col-md-10 ">
+      <div class="image-container ">
+        <img src="../assets/img/U_Learn_Logo.png " width="1000 " height="320 ">
+      </div>
+    </div>
+  </div>
+</div>
+
+

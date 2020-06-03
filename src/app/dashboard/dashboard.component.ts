@@ -7,17 +7,18 @@ import * as Chartist from 'chartist';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  
-  nombreUsuario
-  apellidoUsuario
-  userRol = localStorage.getItem('roleUser')
+
+  nombreUsuario;
+  apellidoUsuario;
+  userRol = localStorage.getItem('roleUser');
   constructor() { }
 
-  ngOnInit() {  
-    this.nombreUsuario = localStorage.getItem('names'); 
+  ngOnInit() {
+    this.nombreUsuario = localStorage.getItem('names');
     this.apellidoUsuario = localStorage.getItem('surnames');
-    if(this.nombreUsuario == null){
-      this.nombreUsuario = 'USUARIO'
+    if (this.nombreUsuario == null) {
+      this.nombreUsuario = 'USUARIO';
     }
+    console.log(localStorage);
   }
 }

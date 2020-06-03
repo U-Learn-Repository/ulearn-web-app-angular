@@ -8,7 +8,7 @@ import { HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class CursosService {
-  
+
   curso: CursoModel;
   cursos: CursoModel[];
 
@@ -18,7 +18,7 @@ export class CursosService {
     // console.log("ENTRO AL SERVICIO");
    }
 
-   async getCursoById(idCurso: number){
+   async getCursoById(idCurso: number) {
      return await new Promise<CursoModel>((resolve) => {
        setTimeout(() => {
         const CURSO_QUERY = gql`
@@ -32,28 +32,28 @@ export class CursosService {
           }
         }
         `;
-        let token = localStorage.getItem('token')
+        const token = localStorage.getItem('token');
         this.query = this.apollo.watchQuery({
           query: CURSO_QUERY,
           variables: {},
           context: {
-            headers: new HttpHeaders().set("Authorization",  "Bearer " + token)
+            headers: new HttpHeaders().set('Authorization',  'Bearer ' + token)
           }
         });
-    
+
         this.query.valueChanges.subscribe(result => {
            this.curso = result.data && result.data.buscarCursoID;
            resolve(this.curso);
         });
-       })
-     })
-    
+       });
+     });
+
   }
 
-    async getAllCursos(){
+    async getAllCursos() {
 
     return await new Promise<CursoModel[]>((resolve) => {
-      setTimeout(() => {   
+      setTimeout(() => {
       const CURSOS_QUERY = gql`
     query{
       listarCursos{
@@ -64,19 +64,19 @@ export class CursosService {
         idProfesor
       }
     }
-    `;    
+    `;
     this.query = this.apollo.watchQuery({
       query: CURSOS_QUERY,
       variables: {}
-    });  
-     
+    });
+
     this.query.valueChanges.subscribe(result => {
-      this.cursos =  result.data && result.data.listarCursos;        
+      this.cursos =  result.data && result.data.listarCursos;
       resolve(this.cursos);
      // return this.cursos
     });
   });
-  })  
+  });
 
   }
 
@@ -96,19 +96,19 @@ export class CursosService {
       }
     }
     `;
-    let token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
     this.apollo.mutate({
       mutation: CURSO_QUERY,
-      variables:{},
+      variables: {},
       context: {
-        headers: new HttpHeaders().set("Authorization",  "Bearer " + token)
+        headers: new HttpHeaders().set('Authorization',  'Bearer ' + token)
       }
     }).subscribe((data) => {
-      console.log("-----------------");
+      console.log('-----------------');
       console.log(data);
-    },(error) => {
+    }, (error) => {
       console.log(error);
-    })
+    });
   }
 
   editarCurso(curso: CursoModel) {
@@ -128,22 +128,22 @@ export class CursosService {
       }
     }
     `;
-    let token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
     this.apollo.mutate({
       mutation: CURSO_QUERY,
-      variables:{},
+      variables: {},
       context: {
-        headers: new HttpHeaders().set("Authorization",  "Bearer " + token)
+        headers: new HttpHeaders().set('Authorization',  'Bearer ' + token)
       }
     }).subscribe((data) => {
-      console.log("-----------------");
+      console.log('-----------------');
       console.log(data.data);
-    },(error) => {
+    }, (error) => {
       console.log(error);
-    })
+    });
   }
 
-  borrarCurso(idCurso: number){
+  borrarCurso(idCurso: number) {
     const CURSO_QUERY = gql`
     mutation{
       deleteCurso(
@@ -151,18 +151,18 @@ export class CursosService {
       )
     }
     `;
-    let token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
     this.apollo.mutate({
       mutation: CURSO_QUERY,
-      variables:{},
+      variables: {},
       context: {
-        headers: new HttpHeaders().set("Authorization",  "Bearer " + token)
+        headers: new HttpHeaders().set('Authorization',  'Bearer ' + token)
       }
     }).subscribe((data) => {
-      console.log("-----------------");
+      console.log('-----------------');
       console.log(data.data);
-    },(error) => {
+    }, (error) => {
       console.log(error);
-    })
+    });
   }
 }
